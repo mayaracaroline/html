@@ -32,27 +32,38 @@ var luke = {
 };
 
 
-  // Cria elementos de uma tabela //
-  var table = document.getElementById("characters-table");
+// Cria elementos de uma tabela //
+var table = document.getElementById("characters-table");
+var tblBody = document.getElementById("characters-tbody");
+var propList = [
+  "name",
+  "height",
+  "mass",
+  "hair_color",
+  "eye_color",
+  "birth_year",
+  "gender",
+
+];
+
+for (i = 0; i < characters.results.length; i++) // row
+{ 
+  var character = characters.results[i];
   var row = document.createElement("tr");
-  var tblBody = document.getElementById("characters-tbody");
-  
-   //    Colunas  //
-  var tdName = row.insertCell(0);
-  var tdHeight = row.insertCell(1);
-  var tdMass = row.insertCell(2);
-  var tdByear = row.insertCell(3);
-  var tdGender = row.insertCell(4);
+  var tdProperty = [];
 
-  //  Inserir valores nas colunas //
-  tdName.innerHTML =  luke.name;
-  tdHeight.innerHTML = luke.height;
-  tdMass.innerHTML = luke.mass;
-  tdByear.innerHTML = luke.birth_year;
-  tdGender.innerHTML = luke.gender;
-  tblBody.appendChild(row);
-  table.appendChild(tblBody);
+  for (j = 0; j < propList.length ; j++)
+  {
+    var prop = propList[j];
+    tdProperty[j] = document.createElement("td");
+    tdProperty[j].innerHTML = character[prop];
+    row.appendChild(tdProperty[j]);
+  }
 
-  // Inserir bordas na tabela //
-  table.setAttribute("border", "1");
+  tblBody.appendChild(row);  
+}
 
+//console.log(Object.keys(characters.results[i]));
+//console.log(character);
+// Inserir bordas na tabela //
+table.setAttribute("border", "1");
