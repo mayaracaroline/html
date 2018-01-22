@@ -35,7 +35,7 @@ var luke = {
   // Cria elementos de uma tabela //
   var table = document.getElementById("characters-table");
   var row = document.createElement("tr");
-  var tblBody = document.createElement("tbody");
+  var tblBody = document.getElementById("characters-tbody");
   
    //    Colunas  //
   var tdName = row.insertCell(0);
