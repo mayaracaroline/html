@@ -12,12 +12,14 @@ var propList = [
   "birth_year",
   "gender",
 ];
+var nextUrl = 'https://swapi.co/api/people/';
 
-
-// Função createRows()
-// Descrição: Função que cria linhas de uma tabela.
+// Função updateRows()
+// Descrição: Função que cria e atualiza linhas de uma tabela.
 // Parâmetros: character - json que será usado para preencher as linhas da tabela.
-function createRows(characters) {
+function updateRows(characters) {
+    tblBody.innerHTML = '';
+
       // Laço  para criar linhas, colunas e inserir os respectivos valores
     for (i = 0; i < characters.results.length; i++)          // row
     { 
@@ -35,9 +37,18 @@ function createRows(characters) {
       }
       tblBody.appendChild(row);  
     }
+    nextUrl = characters.next;                                // Para receber a url da próxima página
 }
 
-fetch('https://swapi.co/api/people/').then(response => {response.json().then(createRows)});
+//Função nextPage()
+//Função que busca dados em uma url externa e preenche a tabela e busca também 
+//a próxima página.
+
+function nextPage(){
+  fetch(nextUrl).then(response => {response.json().then(updateRows)});
+}
 
 // Inserir bordas na tabela //
 table.setAttribute("border", "1");
+
+nextPage();
