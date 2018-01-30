@@ -1,0 +1,12 @@
+
+
+.btnActive{
+	font-size: 14px;
+	background-color: #A9A9A9;
+	color: #000000; 
+	width: 20px;
+	height: 20px;
+	border: solid 1px;
+	border-color:#000000; 
+}
+

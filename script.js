@@ -14,28 +14,31 @@ var propList = [
 ];
 var nextUrl = 'https://swapi.co/api/people/';
 var previousUrl = null;
-var currentUrl = [];
-var btn = [];
+var currentUrl = []; // Array que recebe a URL de todas as páginas
+var btn = []; // Array para a criação de botões
 
 
+// -------------------------------------------------- Functions --------------------------------------------------------
 
 // Função updateRows()
 // Descrição: Função que cria e atualiza linhas de uma tabela.
 // Parâmetros: character - json que será usado para preencher as linhas da tabela.
 function updateRows(characters) {
-    tblBody.innerHTML = '';
+    tblBody.innerHTML = '';                                   //Limpa a tabela para inserir dados da próxima página
+    //Laço para inserir a URL referente a página desejada 
+    //    character.count = Total de personagens
     for (let i = 0; i < Math.ceil(characters.count/10); i++)
     {
         currentUrl[i] = "https://swapi.co/api/people/?page=" + (i+1); 
     }
 
-      // Laço  para criar linhas, colunas e inserir os respectivos valores
-    for (let i = 0; i < characters.results.length; i++)          // row
+    // Laço  para criar linhas, colunas e inserir os respectivos valores
+    for (let i = 0; i < characters.results.length; i++)        // row
     { 
-      var character = characters.results[i];                 // Para receber a collection de personagens
-      var row = document.createElement("tr");                // Cria a linha da tabela 
-      var tdProperty = [];                                  // Para receber as colunas (proporcional a qtd de 
-//                                                              propriedades
+      var character = characters.results[i];                  // Para receber a collection de personagens
+      var row = document.createElement("tr");                 // Cria a linha da tabela 
+      var tdProperty = [];                                    // Para receber as colunas (proporcional a qtd de 
+//                                                               propriedades
       for (j = 0; j < propList.length ; j++)
       {
         var prop = propList[j];                              // Recebe uma propriedade de propList referente ao índice
@@ -48,39 +51,52 @@ function updateRows(characters) {
     }
 
     // Controlar quando os botões Previous e Next devem aparecer //
-    nextUrl = characters.next;                                // Para receber a url da próxima página
-    previousUrl = characters.previous;                        // Para receber a url da página anterior
+    nextUrl = characters.next;                                          // Para receber a url da próxima página
+    previousUrl = characters.previous;                                  // Para receber a url da página anterior
 
-    if (nextUrl === null )
+    if (nextUrl === null )                                              // Indica última página
     {
-      document.getElementById("nextPage").style.display = "none";
+      document.getElementById("nextPage").style.display = "none";       // Oculta o botão Next
     }
-    else if (previousUrl === null)
+    else if (previousUrl === null)                                      // Indica primeira página
     {
-      document.getElementById("previousPage").style.display = "none";
+      document.getElementById("previousPage").style.display = "none";   // Oculta o botão Previous
     }
-    else
+    else                                                                // Caso contrário mostra ambos os botões
     {
-      document.getElementById("nextPage").style.display = "inline";
+      document.getElementById("nextPage").style.display = "inline"; 
       document.getElementById("previousPage").style.display = "inline"; 
     }
-
-  return currentUrl;
+    //body.appendChild(text);
+  return currentUrl; //Retorna a URL para a função createBtn
 }
   
-function insertBtn(currentUrl){
-  var btnPrevious = document.getElementById("previousPage");
-  var btnNext = document.getElementById("nextPage");
-  var idBtn = document.getElementById("btn");
+
+// Função: createBtn()
+// Descrição: Função que cria os botões para navegar entre as páginas
+// Parâmetros: URL da página que será direcionada ao clicar no botão
+function createBtn(currentUrl){
   var body = document.getElementById("body"); 
+  //Laço para criação de botões para navegar entre as páginas 
   for (let i = 0; i < currentUrl.length; i++)
   {
-    btn[i]= document.createElement("button");
-    btn[i].setAttribute("id", "btn");
-    btn[i].innerHTML = i + 1;
+    btn[i] = document.createElement("button");                    //Criação de botões conforme a quantidade de páginas
+    btn[i].setAttribute("class", "btn");                             //Definir class para os botões
+    btn[i].innerHTML = i + 1;                                     //Enumerar botões
     body.appendChild(btn[i]);
-    btn[i].addEventListener("click", function(){ currentPage(currentUrl[i])});
+    btn[i].addEventListener("click", function(){ currentPage(currentUrl[i]) }); //Adiciona onClick ao botão
+    btn[i].addEventListener("click", btnAnimation);
   }       
+}
+
+function btnAnimation(){
+
+  var btnAll = document.querySelectorAll(".btn");
+  btnAll.forEach(function(element){
+    element.classList.remove("btnActive");
+  });
+
+  this.classList.add("btnActive");
 }
 
 
@@ -88,7 +104,7 @@ function insertBtn(currentUrl){
 //Descrição: Função que busca dados em uma url externa e preenche a tabela e busca também 
 //a próxima página.
 function createPage(){
-    fetch(nextUrl).then(response => {response.json().then(updateRows).then(insertBtn)});
+    fetch(nextUrl).then(response => {response.json().then(updateRows).then(createBtn)});
 }
 function nextPage(){
   fetch(nextUrl).then(response => {response.json().then(updateRows)});
