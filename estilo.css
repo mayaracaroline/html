@@ -1,4 +1,71 @@
+#characters-table{
+	margin: auto;
+	border-radius: 15px;
+	font-family: "arial";
+	color: #808080;
+	width: 90%;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-collapse: collapse;
+	text-align: center;
+}
 
+#characters-table tr:nth-child(even){
+	background-color: #F5F5F5;
+	border: none;
+}
+
+#characters-table tr:nth-child(odd){
+	background-color: #FFF;
+	border: none;
+}
+
+#characters-table thead th{
+	background-color: #7B68EE;
+	color: #FFF;
+	border: none;
+	font-weight: bold;
+	text-align: center;
+	height: 60px;
+}
+
+#characters-table thead th:first-child{
+	border-top-left-radius: 15px;
+}
+
+#characters-table thead th:last-child{
+	border-top-right-radius: 15px;
+}
+
+#characters-table tbody tr{
+	height: 60px;
+}
+
+#characters-table tbody tr:last-child td:last-child{
+	border-radius: 15px;
+}
+#characters-table tbody tr:last-child td:first-child{
+	border-radius: 15px;
+}
+
+#btnNext{
+	margin-left: 50px;
+}
+
+#nextPage{
+	margin-top: 10px;
+	margin-left: 5px;
+}
+#previousPage{
+	margin-top: 10px;
+	right: 50px;
+	margin-left:5px;
+}
+
+.btn{
+	margin-top:10px;
+	position: relative;
+	margin-left:5px;
+}
 
 .btnActive{
 	font-size: 14px;
@@ -8,5 +75,9 @@
 	height: 20px;
 	border: solid 1px;
 	border-color:#000000; 
+	margin: 5px;
 }
 
+#div-button{
+	margin-left: 60px;
+}

@@ -139,7 +139,4 @@ function goToPage(pageNumber) {
 }
 // --------------------------------------------------------------------//
 
-// Inserir bordas na tabela //
-table.setAttribute("border", "1");
-
 createPage(); // chamada da função para preencher pela primeira vez a tabela
