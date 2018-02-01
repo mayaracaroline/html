@@ -78,6 +78,9 @@ function updateRows(characters) {
 // Parâmetros: URL da página que será direcionada ao clicar no botão
 function createBtn(currentUrl){
   var body = document.getElementById("body"); 
+  var btnNext = document.getElementById("nextPage");
+  var btnPrevious = document.getElementById("previousPage");
+  var divButton = document.getElementById("div-button");
   //Laço para criação de botões para navegar entre as páginas 
   for (let i = 0; i < currentUrl.length; i++)
   {
@@ -86,9 +89,10 @@ function createBtn(currentUrl){
     btn[i].setAttribute("class", "btn");                          //Definir class para os botões
     btn[i].setAttribute("data-page-number", pageNumber)
     btn[i].innerHTML = pageNumber;                                     //Enumerar botões
-    body.appendChild(btn[i]);
+    divButton.appendChild(btn[i]);
     btn[i].addEventListener("click", function(){ goToPage(pageNumber) }); //Adiciona onClick ao botão
-  }       
+    divButton.insertBefore(btn[i],btnNext); 
+  }  
 }
 
 // --------------------------------------------------------------------//

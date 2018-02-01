@@ -6,27 +6,29 @@
 	<title> Star Wars | Personagens </title>
 </head>
 <body id = "body">
+	<div id="container">
+		<table id="characters-table">
+			<!-- Table Head -->
+			<thead>	
+			 	<tr>
+			 		<th>Nome</th>
+			 		<th>Altura</th>
+			 		<th>Peso</th>
+			 		<th>Cor do Cabelo</th>
+			 		<th>Cor dos Olhos</th>
+			 		<th>Ano de nascimento</th>
+			 		<th>Gênero</th>
+			 	</tr>
+			</thead>
+			<tbody id="characters-tbody"> </tbody>
+		</table>
+		<div id="div-button">
+			<button id="previousPage" onclick="previousPage()"> << </button> 
+			<button id="nextPage" onclick="nextPage()"> >></button>
 
-	<table id="characters-table">
-		<!-- Table Head -->
-		<thead>	
-		 	<tr>
-		 		<th>Nome</th>
-		 		<th>Altura</th>
-		 		<th>Peso</th>
-		 		<th>Cor do Cabelo</th>
-		 		<th>Cor dos Olhos</th>
-		 		<th>Ano de nascimento</th>
-		 		<th>Gênero</th>
-		 	</tr>
-		</thead>
-		<tbody id="characters-tbody"> </tbody>
-	</table>
-	<div id="div-button">
-		<button id="previousPage" onclick="previousPage()"> Previous </button> 
-		<button id="nextPage" onclick="nextPage()"> Next </button>
+
+		</div>
 	</div>
-
 	<script type="text/javascript" src="script.js"></script>
 
 </body>
