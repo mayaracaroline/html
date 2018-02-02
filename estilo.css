@@ -39,10 +39,10 @@
 }
 
 #characters-table tbody tr:last-child td:last-child{
-	border-radius: 15px;
+	border-radius: 0 0 15px 0;
 }
 #characters-table tbody tr:last-child td:first-child{
-	border-radius: 15px;
+	border-radius: 0 0 0 15px;
 }
 
 #btnNext{
