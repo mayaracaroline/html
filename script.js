@@ -80,19 +80,20 @@ function createBtn(currentUrl){
   var body = document.getElementById("body"); 
   var btnNext = document.getElementById("nextPage");
   var btnPrevious = document.getElementById("previousPage");
-  var divButton = document.getElementById("div-button");
+  var divButton = document.getElementById("div-button"); 
   //Laço para criação de botões para navegar entre as páginas 
   for (let i = 0; i < currentUrl.length; i++)
   {
    let pageNumber = i+1;
     btn[i] = document.createElement("button");                    //Criação de botões conforme a quantidade de páginas
     btn[i].setAttribute("class", "btn");                          //Definir class para os botões
-    btn[i].setAttribute("data-page-number", pageNumber)
+    btn[i].setAttribute("data-page-number", pageNumber);
     btn[i].innerHTML = pageNumber;                                     //Enumerar botões
     divButton.appendChild(btn[i]);
     btn[i].addEventListener("click", function(){ goToPage(pageNumber) }); //Adiciona onClick ao botão
     divButton.insertBefore(btn[i],btnNext); 
-  }  
+  } 
+  btn[0].setAttribute("class","btn btnActive");
 }
 
 // --------------------------------------------------------------------//
