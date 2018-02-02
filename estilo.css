@@ -99,12 +99,3 @@
 .btn:hover:not(.btnActive){
 	background-color: #F5F5F5;
 }
-
-.first-btn{
-	background-color: #7B68EE;
-}
-
-
-/*button[data-page-number="1"]{
-	background-color: #7B68EE;
-}*/

@@ -55,13 +55,11 @@ function updateRows(characters) {
 
     if (currentPage === 9 )                                              // Indica última página
     {
-      console.log("currentPage " + currentPage);
       document.getElementById("nextPage").style.display = "none";       // Oculta o botão Next
       document.getElementById("previousPage").style.display = "inline"; //Mostra o botão Previous
     }
     else if (currentPage === 1)                                         // Indica primeira página
     {
-      console.log("currentPage " + currentPage);
       document.getElementById("previousPage").style.display = "none";   // Oculta o botão Previous
       document.getElementById("nextPage").style.display = "inline";     // Mostra o botão Next  
     }
