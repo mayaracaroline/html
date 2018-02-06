@@ -1,3 +1,4 @@
+(function(){ 
 //------------------------------------------- Declarações --------------------------------------------------------------
 // Cria elementos de uma tabela //
 var table = document.getElementById("characters-table");    // Para receber a tabela "characters-table"
@@ -23,7 +24,8 @@ var currentPage = 1;
 // Função updateRows()
 // Descrição: Função que cria e atualiza linhas de uma tabela.
 // Parâmetros: character - json que será usado para preencher as linhas da tabela.
-function updateRows(characters) {
+
+    function updateRows(characters) {
     tblBody.innerHTML = '';                                   //Limpa a tabela para inserir dados da próxima página
     //Laço para inserir a URL referente a página desejada 
     //    character.count = Total de personagens
@@ -70,6 +72,7 @@ function updateRows(characters) {
     }
   return currentUrl; //Retorna a URL para a função createBtn
 }
+
 // --------------------------------------------------------------------//
 // Função: createBtn()
 // Descrição: Função que cria os botões para navegar entre as páginas
@@ -78,6 +81,8 @@ function createBtn(currentUrl){
   var body = document.getElementById("body"); 
   var btnNext = document.getElementById("nextPage");
   var btnPrevious = document.getElementById("previousPage");
+  btnNext.addEventListener("click", function(){nextPage()});
+  btnPrevious.addEventListener("click", function(){previousPage()});
   var divButton = document.getElementById("div-button"); 
   //Laço para criação de botões para navegar entre as páginas 
   for (let i = 0; i < currentUrl.length; i++)
@@ -143,3 +148,4 @@ function goToPage(pageNumber) {
 // --------------------------------------------------------------------//
 
 createPage(); // chamada da função para preencher pela primeira vez a tabela
+})();
